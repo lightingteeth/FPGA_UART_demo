@@ -1,0 +1,6 @@
+GUI/*
+!GUI/source/
+!GUI/source/main.pro
+!GUI/ui_files
+.*
+!.gitignore
