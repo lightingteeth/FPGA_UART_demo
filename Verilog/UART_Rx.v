@@ -1,17 +1,18 @@
 `timescale 1ns/1ns
 
 module UART_Rx (
-    parameter UART_CLK_CNT = , 
+    parameter UART_CLK_CNT = 434, 
+    parameter data_width = 8
 ) 
 (
     input wire rst,
     input wire clk,
     input wire uart_rx_pin,
-    output reg [7:0] uart_rx_data,
+    output reg [data_width-1:0] uart_rx_data,
 );
 
-    parameter UART_CLK_CNT_HALF = UART_CLK_CNT / 2;
-    reg [16:0] clk_cnt;
+    localparam UART_CLK_CNT_HALF = UART_CLK_CNT / 2;
+    reg [15:0] clk_cnt;
     reg [1:0] bit_cnt;
     reg receive_begin;
     reg start_signal;
@@ -39,7 +40,7 @@ module UART_Rx (
                     if (bit_cnt < data_width) begin
                         uart_rx_data[bit_cnt] <= uart_rx_pin;
                         bit_cnt <= bit_cnt + 1;
-                    end else begin
+                    end else if (uart_rx_pin) begin
                         receive_begin <= 0;
                     end
                     clk_cnt <= 0;

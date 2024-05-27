@@ -1,8 +1,10 @@
 GUI/** 
 !GUI/**/
-!**/.gitkeep
-!GUI/source/
+!GUI/source/** 
 !GUI/source/main.pro
 !GUI/ui_files
 
 .DS_Store
+.vscode/
+
+Verilog/XDC/** 
