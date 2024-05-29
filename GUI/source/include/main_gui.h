@@ -1,6 +1,7 @@
 #include "../../header/ui_mainwindow.h"
 #include <QWidget>
 #include <QMainWindow>
+#include "lua_include.h"
 
 
 class MyMainWindow : public QMainWindow
@@ -9,6 +10,7 @@ class MyMainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
+    lua_State *L;
 
 public:
     MyMainWindow(QWidget *parent = nullptr);

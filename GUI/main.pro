@@ -2,15 +2,17 @@ QT += core gui widgets serialport
 
 TARGET = GUI_demo
 TEMPLATE = app
-CONFIG+=sdk_no_version_check 
+CONFIG += sdk_no_version_check 
+
+# 链接lua的库
+# !!!自行编译时需修改路径!!!
+INCLUDEPATH += /opt/homebrew/Cellar/lua/5.4.6/include/lua5.4
+LIBS += -L/opt/homebrew/Cellar/lua/5.4.6/lib -llua
 
 # 设计中间文件的目录
 OBJECTS_DIR = construct/
 MOC_DIR = moc/
 UI_DIR = header/
-
-# MOC文件
-QMAKE_MOC += include/main_gui.h
 
 # 源文件
 SOURCES += \
