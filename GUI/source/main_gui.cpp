@@ -7,7 +7,7 @@
 #include "./include/lua_include.h"
 
 MyMainWindow::MyMainWindow(QWidget *parent) 
-    : QMainWindow(parent), ui(new Ui::MainWindow), L(lua_newstate())
+    : QMainWindow(parent), ui(new Ui::MainWindow), L(luaL_newstate()) //原来为lua_newstate()，改前报错
 {
     ui->setupUi(this);
     luaL_openlibs(L);
@@ -28,8 +28,9 @@ MyMainWindow::~MyMainWindow() {
 void MyMainWindow::func_send() {
     //处理发送的槽
     QString path = QFileDialog::getOpenFileName(this, "选择发送数据", "$HOME", "*.txt");
-
-    send_UART();
+    if (!path.isEmpty()) {
+        send_UART(path);
+    }
 }
 
 void MyMainWindow::func_train() {

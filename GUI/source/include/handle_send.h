@@ -1,6 +1,8 @@
 #ifndef HANDLE_SEND_H 
 #define HANDLE_SEND_H
 
-void send_UART();
+#include <QString>
+
+void send_UART(const QString &path);
 
 #endif

@@ -6,8 +6,8 @@ CONFIG += sdk_no_version_check
 
 # 链接lua的库
 # !!!自行编译时需修改路径!!!
-INCLUDEPATH += /opt/homebrew/Cellar/lua/5.4.6/include/lua5.4
-LIBS += -L/opt/homebrew/Cellar/lua/5.4.6/lib -llua
+INCLUDEPATH += /usr/include/lua5.4
+LIBS += -L/usr/lib/x86_64-linux-gnu -llua5.4
 
 # 设计中间文件的目录
 OBJECTS_DIR = construct/
